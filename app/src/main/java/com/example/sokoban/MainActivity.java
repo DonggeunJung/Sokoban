@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     stageCards[i][j].addImage(R.drawable.img_house_empty); // 3
                     stageCards[i][j].addImage(R.drawable.img_house_full); // 4
                     stageCards[i][j].addImage(R.drawable.img_push_man); // 5
-                    stageCards[i][j].addImage(R.drawable.img_push_man); // 6
+                    stageCards[i][j].addImage(R.drawable.img_man_in_house); // 6
                     if(stage[i][j] >= 5) {
                         pushMan.x = j;
                         pushMan.y = i;
