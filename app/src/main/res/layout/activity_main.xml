@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/gameLib" />
+
+    <com.example.sokoban.JGameLib
+        android:id="@+id/gameLib"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStatus"
+        app:layout_constraintBottom_toTopOf="@+id/btnUp" />
+
+    <Button
+        android:id="@+id/btnLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="←"
+        android:textSize="25sp"
+        android:onClick="onBtnArrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnUp"
+        app:layout_constraintTop_toBottomOf="@+id/gameLib"
+        app:layout_constraintBottom_toTopOf="@+id/btnDown"/>
+
+    <Button
+        android:id="@+id/btnUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="↑"
+        android:textSize="25sp"
+        android:onClick="onBtnArrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameLib"
+        app:layout_constraintBottom_toTopOf="@+id/btnDown"/>
+
+    <Button
+        android:id="@+id/btnRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:text="→"
+        android:textSize="25sp"
+        android:onClick="onBtnArrow"
+        app:layout_constraintStart_toEndOf="@+id/btnUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameLib"
+        app:layout_constraintBottom_toTopOf="@+id/btnDown"/>
+
+    <Button
+        android:id="@+id/btnPrev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Prev"
+        android:textSize="25sp"
+        android:onClick="onBtnStage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDown"
+        app:layout_constraintTop_toBottomOf="@+id/btnUp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btnDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="↓"
+        android:textSize="25sp"
+        android:onClick="onBtnArrow"
+        app:layout_constraintStart_toEndOf="@+id/btnPrev"
+        app:layout_constraintEnd_toStartOf="@+id/btnNext"
+        app:layout_constraintTop_toBottomOf="@+id/btnUp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:text="Next"
+        android:textSize="25sp"
+        android:onClick="onBtnStage"
+        app:layout_constraintStart_toEndOf="@+id/btnDown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
