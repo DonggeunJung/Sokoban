@@ -15,7 +15,7 @@ This is a sample project of JGameLib for education.
                                                                                                                              
 How to play this game :
                                                                                                                              
- : Move Push man and insert all stones into house using arrow buttons.
+ : Move Push man using arrow buttons and insert all stones into house.
                                                                                                                              
 
 < Additional Infomation >
