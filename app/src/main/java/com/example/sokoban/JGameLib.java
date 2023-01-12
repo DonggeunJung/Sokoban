@@ -5,7 +5,6 @@
 package com.example.sokoban;
 
 import static android.content.Context.MODE_PRIVATE;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
