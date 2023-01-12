@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     Point pushMan = new Point(-1,-1);
     int remain = 0;
     TextView tvStatus;
+    static String STAGE_KEY = "stage";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         gameLib = findViewById(R.id.gameLib);
         tvStatus = findViewById(R.id.tvStatus);
+        stageNum = gameLib.getInt(STAGE_KEY, 1);
         initGame(stageNum);
     }
 
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initGame(int stageN) {
+        int record = gameLib.getInt(STAGE_KEY, 1);
+        if(record < stageN)
+            gameLib.set(STAGE_KEY, stageN);
         remain = 0;
         int[][] stage = gameLib.assetFileIntArray("stage_" + stageN + ".txt");
         if(stage == null || stage.length < 1) return;
