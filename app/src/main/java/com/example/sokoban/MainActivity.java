@@ -39,24 +39,24 @@ public class MainActivity extends AppCompatActivity {
         gameLib.deleteAllCards();
         gameLib.setScreenGrid(n,m);
         stageCards = new JGameLib.Card[m][n];
-        for(int i=0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                stageCards[i][j] = gameLib.addCard(R.drawable.img_back, j, i, 1, 1); // 0
-                stageCards[i][j].addImage(R.drawable.img_block); // 1
-                if(stage[i][j] != 1) {
-                    stageCards[i][j].addImage(R.drawable.img_stone); // 2
-                    stageCards[i][j].addImage(R.drawable.img_house_empty); // 3
-                    stageCards[i][j].addImage(R.drawable.img_house_full); // 4
-                    stageCards[i][j].addImage(R.drawable.img_push_man); // 5
-                    stageCards[i][j].addImage(R.drawable.img_man_in_house); // 6
-                    if(stage[i][j] >= 5) {
-                        pushMan.x = j;
-                        pushMan.y = i;
-                    } else if(stage[i][j] == 2) {
+        for(int y=0; y < m; y++) {
+            for (int x = 0; x < n; x++) {
+                stageCards[y][x] = gameLib.addCard(R.drawable.img_back, x, y, 1, 1); // 0
+                stageCards[y][x].addImage(R.drawable.img_block); // 1
+                if(stage[y][x] != 1) {
+                    stageCards[y][x].addImage(R.drawable.img_stone); // 2
+                    stageCards[y][x].addImage(R.drawable.img_house_empty); // 3
+                    stageCards[y][x].addImage(R.drawable.img_house_full); // 4
+                    stageCards[y][x].addImage(R.drawable.img_push_man); // 5
+                    stageCards[y][x].addImage(R.drawable.img_man_in_house); // 6
+                    if(stage[y][x] >= 5) {
+                        pushMan.x = x;
+                        pushMan.y = y;
+                    } else if(stage[y][x] == 2) {
                         remain ++;
                     }
                 }
-                stageCards[i][j].imageChange(stage[i][j]);
+                stageCards[y][x].imageChange(stage[y][x]);
             }
         }
         tvStatus.setText("Stage - " + stageN);
