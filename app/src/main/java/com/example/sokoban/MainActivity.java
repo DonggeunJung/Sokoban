@@ -7,21 +7,20 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    TextView tvStatus;
     JGameLib gameLib = null;
-    int stageNum = 1;
-    int m=0, n=0;
+    int stageNum = 1, remain = 0;
+    int rows=0, cols=0;
     JGameLib.Card[][] stageCards = null;
     Point pushMan = new Point(-1,-1);
-    int remain = 0;
-    TextView tvStatus;
     static String STAGE_KEY = "stage";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        gameLib = findViewById(R.id.gameLib);
         tvStatus = findViewById(R.id.tvStatus);
+        gameLib = findViewById(R.id.gameLib);
         stageNum = gameLib.getInt(STAGE_KEY, 1);
         initGame(stageNum);
     }
@@ -40,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
         remain = 0;
         int[][] stage = gameLib.assetFileIntArray("stage_" + stageN + ".txt");
         if(stage == null || stage.length < 1) return;
-        m = stage.length; n = stage[0].length;
+        rows = stage.length; cols = stage[0].length;
         gameLib.deleteAllCards();
-        gameLib.setScreenGrid(n,m);
-        stageCards = new JGameLib.Card[m][n];
-        for(int y=0; y < m; y++) {
-            for (int x = 0; x < n; x++) {
+        gameLib.setScreenGrid(cols,rows);
+        stageCards = new JGameLib.Card[rows][cols];
+        for(int y=0; y < rows; y++) {
+            for (int x = 0; x < cols; x++) {
                 stageCards[y][x] = gameLib.addCard(R.drawable.img_back, x, y, 1, 1); // 0
                 stageCards[y][x].addImage(R.drawable.img_block); // 1
                 if(stage[y][x] != 1) {
@@ -109,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        if(nextx1 < 0 || nextx1 >= n || nexty1 < 0 || nexty1 >= m
+        if(nextx1 < 0 || nextx1 >= cols || nexty1 < 0 || nexty1 >= rows
                 || stageCards[nexty1][nextx1].idx == 1)
             return;
         if(stageCards[nexty1][nextx1].idx == 0 || stageCards[nexty1][nextx1].idx == 3) {
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             insertPushMan(nextx1, nexty1);
             removePushMan(currx, curry);
         } else {
-            if(nextx2 < 0 || nextx2 >= n || nexty2 < 0 || nexty2 >= m
+            if(nextx2 < 0 || nextx2 >= cols || nexty2 < 0 || nexty2 >= rows
                     || stageCards[nexty2][nextx2].idx == 1 || stageCards[nexty2][nextx2].idx == 2
                     || stageCards[nexty2][nextx2].idx == 4)
                 return;
