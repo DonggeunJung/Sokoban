@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void initGame(int stageN) {
+    void initGame(int stageN) {
         int record = gameLib.getInt(STAGE_KEY, 1);
         if(record < stageN)
             gameLib.set(STAGE_KEY, stageN);
