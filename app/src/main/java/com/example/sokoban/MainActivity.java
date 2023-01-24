@@ -109,17 +109,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(nextx1 < 0 || nextx1 >= cols || nexty1 < 0 || nexty1 >= rows
-                || stageCards[nexty1][nextx1].idx == 1)
+                || stageCards[nexty1][nextx1].imageIndex() == 1)
             return;
-        if(stageCards[nexty1][nextx1].idx == 0 || stageCards[nexty1][nextx1].idx == 3) {
+        if(stageCards[nexty1][nextx1].imageIndex() == 0 || stageCards[nexty1][nextx1].imageIndex() == 3) {
             pushMan.x = nextx1;
             pushMan.y = nexty1;
             insertPushMan(nextx1, nexty1);
             removePushMan(currx, curry);
         } else {
             if(nextx2 < 0 || nextx2 >= cols || nexty2 < 0 || nexty2 >= rows
-                    || stageCards[nexty2][nextx2].idx == 1 || stageCards[nexty2][nextx2].idx == 2
-                    || stageCards[nexty2][nextx2].idx == 4)
+                    || stageCards[nexty2][nextx2].imageIndex() == 1 || stageCards[nexty2][nextx2].imageIndex() == 2
+                    || stageCards[nexty2][nextx2].imageIndex() == 4)
                 return;
             pushMan.x = nextx1;
             pushMan.y = nexty1;
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
     // User Event end ====================================
 
     void insertStone(int x, int y) {
-        if(stageCards[y][x].idx == 3) {
+        if(stageCards[y][x].imageIndex() == 3) {
             stageCards[y][x].imageChange(4);
             remain --;
         } else {
@@ -148,15 +148,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void removePushMan(int x, int y) {
-        if(stageCards[y][x].idx == 6)
+        if(stageCards[y][x].imageIndex() == 6)
             stageCards[y][x].imageChange(3);
         else
             stageCards[y][x].imageChange(0);
     }
 
     void insertPushMan(int x, int y) {
-        if(stageCards[y][x].idx == 3 || stageCards[y][x].idx == 4) {
-            if(stageCards[y][x].idx == 4)
+        if(stageCards[y][x].imageIndex() == 3 || stageCards[y][x].imageIndex() == 4) {
+            if(stageCards[y][x].imageIndex() == 4)
                 remain ++;
             stageCards[y][x].imageChange(6);
         } else {
