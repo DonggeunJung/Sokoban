@@ -16,10 +16,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/gameLib" />
+        app:layout_constraintBottom_toTopOf="@+id/mosaic" />
 
-    <com.example.sokoban.JGameLib
-        android:id="@+id/gameLib"
+    <com.example.sokoban.Mosaic
+        android:id="@+id/mosaic"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:onClick="onBtnStage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnUp"
-        app:layout_constraintTop_toBottomOf="@+id/gameLib"
+        app:layout_constraintTop_toBottomOf="@+id/mosaic"
         app:layout_constraintBottom_toTopOf="@+id/btnDown"/>
 
     <Button
@@ -49,7 +49,7 @@
         android:onClick="onBtnArrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameLib"
+        app:layout_constraintTop_toBottomOf="@+id/mosaic"
         app:layout_constraintBottom_toTopOf="@+id/btnDown"/>
 
     <Button
@@ -62,7 +62,7 @@
         android:onClick="onBtnStage"
         app:layout_constraintStart_toEndOf="@+id/btnUp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameLib"
+        app:layout_constraintTop_toBottomOf="@+id/mosaic"
         app:layout_constraintBottom_toTopOf="@+id/btnDown"/>
 
     <Button

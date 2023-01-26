@@ -8,10 +8,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     TextView tvStatus;
-    JGameLib gameLib = null;
+    Mosaic mosaic = null;
     int stageNum = 1, remain = 0;
     int rows=0, cols=0;
-    JGameLib.Card[][] stageCards = null;
+    Mosaic.Card[][] stageCards = null;
     Point pushMan = new Point(-1,-1);
     static String STAGE_KEY = "stage";
 
@@ -20,32 +20,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tvStatus = findViewById(R.id.tvStatus);
-        gameLib = findViewById(R.id.gameLib);
-        stageNum = gameLib.getInt(STAGE_KEY, 1);
+        mosaic = findViewById(R.id.mosaic);
+        stageNum = mosaic.getInt(STAGE_KEY, 1);
         initGame(stageNum);
     }
 
     @Override
     protected void onDestroy() {
-        if(gameLib != null)
-            gameLib.clearMemory();
+        if(mosaic != null)
+            mosaic.clearMemory();
         super.onDestroy();
     }
 
     void initGame(int stageN) {
-        int record = gameLib.getInt(STAGE_KEY, 1);
+        int record = mosaic.getInt(STAGE_KEY, 1);
         if(record < stageN)
-            gameLib.set(STAGE_KEY, stageN);
+            mosaic.set(STAGE_KEY, stageN);
         remain = 0;
-        int[][] stage = gameLib.assetFileIntArray("stage_" + stageN + ".txt");
+        int[][] stage = mosaic.assetFileIntArray("stage_" + stageN + ".txt");
         if(stage == null || stage.length < 1) return;
         rows = stage.length; cols = stage[0].length;
-        gameLib.deleteAllCards();
-        gameLib.setScreenGrid(cols,rows);
-        stageCards = new JGameLib.Card[rows][cols];
+        mosaic.deleteAllCards();
+        mosaic.setScreenGrid(cols,rows);
+        stageCards = new Mosaic.Card[rows][cols];
         for(int y=0; y < rows; y++) {
             for (int x = 0; x < cols; x++) {
-                stageCards[y][x] = gameLib.addCard(R.drawable.img_back, x, y, 1, 1); // 0
+                stageCards[y][x] = mosaic.addCard(R.drawable.img_back, x, y, 1, 1); // 0
                 stageCards[y][x].addImage(R.drawable.img_block); // 1
                 if(stage[y][x] != 1) {
                     stageCards[y][x].addImage(R.drawable.img_stone); // 2
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             insertPushMan(nextx1, nexty1);
             removePushMan(currx, curry);
             if(remain == 0) {
-                gameLib.popupDialog(null, "Congratulate! You passed current stage.", "Close");
+                mosaic.popupDialog(null, "Congratulate! You passed current stage.", "Close");
                 if(stageNum < 36){
                     stageNum++;
                     initGame(stageNum);
